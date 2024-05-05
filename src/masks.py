@@ -1,12 +1,15 @@
 from typing import Union
 
-
+# # Пример работы функции, возвращающей маску карты
+# 7000792289606361     # входной аргумент
+# 7000 79** **** 6361  # выход функции
 def mask_card_number(card_number: int) -> str:
     str_card_number: str = str(card_number)
     masked_card_number = (
         str_card_number[:4]
         + " "
-        + "X" * len(str_card_number[4:8])
+        + str_card_number[4:6]
+        + "X" * len(str_card_number[6:8])
         + " "
         + "X" * len(str_card_number[8:11])
         + " "
