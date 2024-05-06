@@ -2,10 +2,7 @@ from typing import Union
 
 
 def mask_card_number(card_number: Union[str, int]) -> str:
-    """
-
-    :rtype: object
-    """
+    """Маскирует номер карты"""
     str_card_number: str = str(card_number)
     masked_card_number = (
         str_card_number[:4]
