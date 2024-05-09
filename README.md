@@ -5,7 +5,7 @@
 ```
 git clone https://github.com/nikita-szr/My_Homework/tree/feature/homework_10_1
 ```
-2. Install requarments: 
+2. Install requirements: 
 ```
 poetry install
 ```
