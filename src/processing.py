@@ -1,7 +1,7 @@
 from typing import List
 
 
-def filter_dicts(dicts: List[dict], state="EXECUTED") -> List[dict]:
+def filter_dicts(dicts: List[dict], state: str = "EXECUTED") -> List[dict]:
     """Возвращает список словарей отфильтрованный по ключу "state" """
     filtered_dicts = []
     for dict in dicts:
