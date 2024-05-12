@@ -1,5 +1,6 @@
-from src.widget import card_or_account_mask, convert_date
 import pytest
+
+from src.widget import card_or_account_mask, convert_date
 
 
 @pytest.fixture
@@ -24,7 +25,5 @@ def test_card_or_account_mask(testing_card_or_account_mask):
     ("2023-02-30T00:00:00", "30.02.2023"),
     ("2023-06-15T00:00:00", "15.06.2023")
 ])
-
-
 def test_convert_date(input_date, expected_output):
     assert convert_date(input_date) == expected_output

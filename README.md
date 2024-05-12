@@ -13,3 +13,7 @@ poetry install
 ```
 check and rate my homework please ^_^
 ```
+4. Tests
+```
+test coverage report: 95%
+```

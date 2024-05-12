@@ -1,5 +1,6 @@
-from src.masks import mask_card_number, mask_bank_account
 import pytest
+
+from src.masks import mask_bank_account, mask_card_number
 
 
 @pytest.fixture
@@ -23,9 +24,3 @@ def test_mask_bank_account(testing_bank_accounts):
     assert mask_bank_account(testing_bank_accounts[0]) == "**3601"
     assert mask_bank_account(testing_bank_accounts[1]) == "**4732"
     assert mask_bank_account(testing_bank_accounts[2]) == "**7395"
-
-
-
-
-
-

@@ -18,6 +18,7 @@ def mask_card_number(card_number: Union[str, int]) -> str:
         return masked_card_number
     return "Неверный номер карты"
 
+
 def mask_bank_account(account_number: Union[str, int]) -> str:
     """Функция маскирует номер счета оставляя последние 4 цифры"""
     account_number = str(account_number)

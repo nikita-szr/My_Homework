@@ -17,7 +17,6 @@ def card_or_account_mask(number: str) -> str:
         return "Введённые данные не распознаны"
 
 
-
 def convert_date(date: str) -> str:
     """Преобразовывает вид строки с датой операции"""
     full_date = date.split("T")[0]
