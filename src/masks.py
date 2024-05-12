@@ -10,9 +10,9 @@ def mask_card_number(card_number: Union[str, int]) -> str:
         + str_card_number[4:6]
         + "X" * len(str_card_number[6:8])
         + " "
-        + "X" * len(str_card_number[8:11])
+        + "X" * len(str_card_number[8:12])
         + " "
-        + str_card_number[11:15]
+        + str_card_number[12:16]
     )
     return masked_card_number
 
