@@ -94,5 +94,7 @@ def transaction_descriptions(operations):
     for operation in operations:
         yield operation["description"]
 
+def card_number_generator(card_number: str) -> str:
+    pass
 
 
