@@ -3,7 +3,7 @@
 ## Install:
 1. Clone repository:
 ```
-git clone https://github.com/nikita-szr/My_Homework/tree/feature/homework_10_1
+https://github.com/nikita-szr/My_Homework/tree/feature/Homework_11_1
 ```
 2. Install requirements: 
 ```
@@ -21,4 +21,12 @@ to run the tests and determine the coverage, enter the following command in the 
 * with the virtual environment activated: "pytest --cov"
 * if you are using Poetry, use the following command: "poetry run pytest --cov"
 
+```
+5. Modules
+```
+main - runs all project functions
+masks - masks card and account numbers
+processing - filters and sorts dictionaries
+widget - disguises accounts and translates dates
+generators - generates transactions and card numbers
 ```
