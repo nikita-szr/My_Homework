@@ -1,7 +1,7 @@
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions, transactions
 from src.masks import mask_bank_account, mask_card_number
+from src.processing import filter_dicts, operations, sort_dicts_by_date
 from src.widget import card_or_account_mask, convert_date
-from src.processing import filter_dicts, sort_dicts_by_date, operations
-from src.generators import filter_by_currency, transaction_descriptions, transactions, card_number_generator
 
 masked_card_number = mask_card_number(7000792289606361)
 masked_bank_account = mask_bank_account(73654108430135874305)
