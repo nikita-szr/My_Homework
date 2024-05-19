@@ -1,9 +1,11 @@
-import pytest
 import os
+
+import pytest
+
 from src.decorators import log
 
 
-def test_log_file(): #file_success
+def test_log_file():  # file_success
     @log(filename="mylog.txt")
     def example_function(x, y):
         return x * y
@@ -16,10 +18,10 @@ def test_log_file(): #file_success
     assert result == 500
 
 
-def test_log_file_raise(): #file_failure
+def test_log_file_raise():  # file_failure
     @log(filename="mylog.txt")
     def example_function(x, y):
-        raise TypeError ("Что-то пошло не так")
+        raise TypeError("Что-то пошло не так")
 
     with pytest.raises(TypeError, match="Что-то пошло не так"):
         example_function(5, 100)
@@ -30,7 +32,7 @@ def test_log_file_raise(): #file_failure
     assert log_string == "example_function error: TypeError. Inputs: (5, 100), {}\n"
 
 
-def test_log_console(capsys): #console_success
+def test_log_console(capsys):  # console_success
     @log()
     def example_function(x, y):
         return x * y
@@ -42,7 +44,7 @@ def test_log_console(capsys): #console_success
     assert result == 500
 
 
-def test_log_console_raise(capsys):  #console_failure
+def test_log_console_raise(capsys):  # console_failure
     @log()
     def example_function(x, y):
         raise ValueError("Что-то пошло не так")
