@@ -15,7 +15,7 @@ check and rate my homework please ^_^
 ```
 4. Tests
 ```
-test coverage report: 95%
+test coverage report: 99% (updated after decorators)
 
 to run the tests and determine the coverage, enter the following command in the terminal 
 * with the virtual environment activated: "pytest --cov"
@@ -29,4 +29,5 @@ masks - masks card and account numbers
 processing - filters and sorts dictionaries
 widget - disguises accounts and translates dates
 generators - generates transactions and card numbers
+decorators - log the results of the function to the file "mylog.txt
 ```

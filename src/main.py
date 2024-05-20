@@ -1,4 +1,6 @@
-from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
+from src.decorators import log
+from src.generators import (card_number_generator, filter_by_currency,
+                            transaction_descriptions)
 from src.masks import mask_bank_account, mask_card_number
 from src.processing import filter_dicts, operations, sort_dicts_by_date
 from src.widget import card_or_account_mask, convert_date
@@ -70,3 +72,11 @@ print(sorted_dicts)
 print(next(usd_transactions)["id"])
 print(next(descriptions))
 print(next(card_number))
+
+
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+
+
+my_function(1, 2)
