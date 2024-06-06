@@ -25,9 +25,8 @@ def transaction_amount(transactions):
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["code"] == "RUB":
             amount = float(transaction["operationAmount"]["amount"])
-            print (amount)
+            return amount
         else:
             currency = transaction["operationAmount"]["currency"]["code"]
             amount = currency_conversion(currency, "RUB", float(transaction["operationAmount"]["amount"]))
-            print (amount)
-
+            return amount
