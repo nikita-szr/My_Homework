@@ -1,4 +1,3 @@
-import os
 import json
 def json_transactions_data(path):
     """Функция принимает на вход json файл и возвращает список словарей с данными о финансовых транзакциях"""
@@ -18,4 +17,5 @@ def json_transactions_data(path):
     except Exception as e:
         print(f"Ошибка: {e}")
         return []
+
 
