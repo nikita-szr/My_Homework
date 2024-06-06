@@ -1,4 +1,5 @@
 import json
+from src.external_api import currency_conversion
 def json_transactions_data(path):
     """Функция принимает на вход json файл и возвращает список словарей с данными о финансовых транзакциях"""
     try:
@@ -18,4 +19,15 @@ def json_transactions_data(path):
         print(f"Ошибка: {e}")
         return []
 
+
+def transaction_amount(transactions):
+    """Функция принимает транзакцию и возвращает сумму транзакции в рублях, конвертируя через API запрос"""
+    for transaction in transactions:
+        if transaction["operationAmount"]["currency"]["code"] == "RUB":
+            amount = float(transaction["operationAmount"]["amount"])
+            print (amount)
+        else:
+            currency = transaction["operationAmount"]["currency"]["code"]
+            amount = currency_conversion(currency, "RUB", float(transaction["operationAmount"]["amount"]))
+            print (amount)
 
