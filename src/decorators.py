@@ -1,6 +1,8 @@
 import functools
 from typing import Any, Callable, Optional
 
+log_message = ""
+
 
 def log(filename: Optional[str] = None) -> Callable:
     def decorator(func: Callable) -> Callable:

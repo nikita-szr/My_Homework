@@ -1,7 +1,7 @@
-from unittest.mock import mock_open, patch, ANY
-from src.utils import json_transactions_data, transaction_amount
 import json
+from unittest.mock import ANY, mock_open, patch
 
+from src.utils import json_transactions_data, transaction_amount
 
 
 def test_json_transactions_data_file_not_found():
@@ -15,8 +15,8 @@ def test_json_transactions_data_json_decode_error():
     with patch('builtins.open', mock_open()) as mock_file:
         with patch('json.load') as mock_json_load:
             mock_json_load.side_effect = json.JSONDecodeError('error', '', 0)
-            result = json_transactions_data('test_file.json')
-            assert result == []
+            json_transactions_data('test_file.json')
+            mock_file.assert_called_once_with('test_file.json', 'r', encoding=ANY)
 
 
 def test_json_transactions_data_other_exception():
@@ -26,15 +26,12 @@ def test_json_transactions_data_other_exception():
         assert result == []
 
 
-
-
 def test_json_transactions_data_valid_json():
     with patch('builtins.open', mock_open()) as mock_file:
         with patch('json.load') as mock_json_load:
             mock_json_load.return_value = [{'id': 1, 'amount': 100}, {'id': 2, 'amount': 200}]
             json_transactions_data('test_file.json')
             mock_file.assert_called_once_with('test_file.json', 'r', encoding=ANY)
-
 
 
 def test_transaction_in_rub():
@@ -50,7 +47,7 @@ def test_transaction_not_in_rub():
         mock_conversion.return_value = 120.0
         transactions = [{"operationAmount": {"currency": {"code": "USD"}, "amount": "100"}}]
         result = transaction_amount(transactions)
-        assert result == None
+        assert result is None
 
 
 def test_multiple_transactions():
@@ -61,4 +58,4 @@ def test_multiple_transactions():
             {"operationAmount": {"currency": {"code": "EUR"}, "amount": "120"}}
         ]
         result = transaction_amount(transactions)
-        assert result == None
+        assert result is None

@@ -3,8 +3,8 @@ from src.generators import (card_number_generator, filter_by_currency,
                             transaction_descriptions)
 from src.masks import mask_bank_account, mask_card_number
 from src.processing import filter_dicts, operations, sort_dicts_by_date
-from src.widget import card_or_account_mask, convert_date
 from src.utils import json_transactions_data, transaction_amount
+from src.widget import card_or_account_mask, convert_date
 
 transactions = [
     {
