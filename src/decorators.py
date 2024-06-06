@@ -6,6 +6,7 @@ def log(filename: Optional[str] = None) -> Callable:
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
+            global log_message
             try:
                 result = func(*args, **kwargs)
                 log_message = f"{func.__name__} ok"
