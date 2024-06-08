@@ -1,0 +1,6 @@
+example_function ok
+example_function error: TypeError. Inputs: (5, 100), {}
+example_function ok
+example_function error: TypeError. Inputs: (5, 100), {}
+example_function ok
+example_function error: TypeError. Inputs: (5, 100), {}

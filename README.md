@@ -3,7 +3,7 @@
 ## Install:
 1. Clone repository:
 ```
-https://github.com/nikita-szr/My_Homework/tree/feature/Homework_11_1
+https://github.com/nikita-szr/My_Homework/tree/feature/Homework_12_1
 ```
 2. Install requirements: 
 ```
@@ -15,7 +15,7 @@ check and rate my homework please ^_^
 ```
 4. Tests
 ```
-test coverage report: 99% (updated after decorators)
+test coverage report: 98% (updated after src.utils(homework_12_1)
 
 to run the tests and determine the coverage, enter the following command in the terminal 
 * with the virtual environment activated: "pytest --cov"
@@ -30,4 +30,6 @@ processing - filters and sorts dictionaries
 widget - disguises accounts and translates dates
 generators - generates transactions and card numbers
 decorators - log the results of the function to the file "mylog.txt
+utils - read json object and convert amount of transaction
+external_api - converts an amount from one currency to another using the currency exchange API
 ```

@@ -3,6 +3,7 @@ from src.generators import (card_number_generator, filter_by_currency,
                             transaction_descriptions)
 from src.masks import mask_bank_account, mask_card_number
 from src.processing import filter_dicts, operations, sort_dicts_by_date
+from src.utils import json_transactions_data, transaction_amount
 from src.widget import card_or_account_mask, convert_date
 
 transactions = [
@@ -62,6 +63,8 @@ sorted_dicts = sort_dicts_by_date(operations)
 usd_transactions = filter_by_currency(transactions, "USD")
 descriptions = transaction_descriptions(transactions)
 card_number = card_number_generator(1, 5)
+transactions_dict = json_transactions_data(r"../data/operations.json")
+transaction_amount_rub = transaction_amount(transactions_dict)
 
 print(masked_card_number)
 print(masked_bank_account)
@@ -72,6 +75,8 @@ print(sorted_dicts)
 print(next(usd_transactions)["id"])
 print(next(descriptions))
 print(next(card_number))
+print(transactions_dict)
+print(transaction_amount_rub)
 
 
 @log(filename="mylog.txt")
