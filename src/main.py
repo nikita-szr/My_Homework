@@ -63,6 +63,8 @@ sorted_dicts = sort_dicts_by_date(operations)
 usd_transactions = filter_by_currency(transactions, "USD")
 descriptions = transaction_descriptions(transactions)
 card_number = card_number_generator(1, 5)
+transactions_dict = json_transactions_data(r"../data/operations.json")
+transaction_amount_rub = transaction_amount(transactions_dict)
 
 print(masked_card_number)
 print(masked_bank_account)
@@ -73,6 +75,8 @@ print(sorted_dicts)
 print(next(usd_transactions)["id"])
 print(next(descriptions))
 print(next(card_number))
+print(transactions_dict)
+print(transaction_amount_rub)
 
 
 @log(filename="mylog.txt")
@@ -81,9 +85,3 @@ def my_function(x, y):
 
 
 my_function(1, 2)
-
-
-transactions_dict = json_transactions_data(r"../data/operations.json")
-transaction_amount_rub = transaction_amount(transactions_dict)
-print(transactions_dict)
-print(transaction_amount_rub)
