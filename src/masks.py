@@ -1,6 +1,5 @@
-from typing import Union
 import logging
-
+from typing import Union
 
 logger = logging.getLogger('masks')
 logger.setLevel(logging.DEBUG)
