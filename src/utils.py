@@ -1,9 +1,9 @@
 import json
 import logging
-from typing import Any, Dict, List, Union
 import os
-import pandas as pd
+from typing import Any, Dict, List, Union
 
+import pandas as pd
 
 from src.external_api import currency_conversion
 

@@ -1,7 +1,9 @@
 import json
 from unittest.mock import ANY, mock_open, patch
+
 import pandas as pd
-from src.utils import transactions_data, transaction_amount
+
+from src.utils import transaction_amount, transactions_data
 
 
 def test_transactions_data_file_not_found():
@@ -32,6 +34,7 @@ def test_transactions_data_valid_json():
             mock_json_load.return_value = [{'id': 1, 'amount': 100}, {'id': 2, 'amount': 200}]
             transactions_data('test_file.json')
             mock_file.assert_called_once_with('test_file.json', 'r', encoding=ANY)
+
 
 def test_csv_transactions_data_file_not_found():
     with patch('pandas.read_csv') as mock_read_csv:
@@ -108,6 +111,7 @@ def test_xlsx_transactions_data_invalid_xlsx():
         result = transactions_data('test_file.xlsx')
         assert result == []
 
+
 def test_xlsx_transactions_data_valid_xlsx():
     with patch('pandas.read_excel') as mock_read_excel:
         mock_read_excel.return_value = pd.DataFrame({
@@ -181,4 +185,3 @@ def test_multiple_transactions():
         ]
         result = transaction_amount(transactions)
         assert result is None
-
