@@ -2,7 +2,6 @@ import json
 import logging
 from typing import Any, Dict, List, Union
 import os
-import csv
 import pandas as pd
 
 
@@ -78,8 +77,41 @@ def transactions_data(path: str) -> list[dict[str, Any]]:
             logger.error(f"Ошибка{e}: {transactions_data}")
             print(f"Ошибка: {e}")
             return []
-    elif file_extension == "xlsx":
-
+    elif file_extension == ".xlsx":
+        try:
+            df = pd.read_excel(path)
+            xlsx_transactions = []
+            for index, row in df.iterrows():
+                transaction = {
+                    "id": row["id"],
+                    "state": row["state"],
+                    "date": row["date"],
+                    "operationAmount": {
+                        "amount": row["amount"],
+                        "currency": {
+                            "name": row["currency_name"],
+                            "code": row["currency_code"]
+                        }
+                    },
+                    "description": row["description"],
+                    "from": row["from"],
+                    "to": row["to"]
+                }
+                xlsx_transactions.append(transaction)
+            logger.info(f"xlsx файл перекодирован в список словарей: {transactions_data}")
+            return xlsx_transactions
+        except FileNotFoundError:
+            logger.error(f"Файл не найден: {transactions_data}")
+            print("Ошибка: Файл не найден.")
+            return []
+        except pd.errors.ParserError:
+            logger.error(f"Файл не является csv объектом: {transactions_data}")
+            print("Ошибка: Файл не является csv объектом.")
+            return []
+        except Exception as e:
+            logger.error(f"Ошибка{e}: {transactions_data}")
+            print(f"Ошибка: {e}")
+            return []
     else:
         logger.error(f"Неподдерживаемый формат файла: {transactions_data}")
         print("Ошибка: Неподдерживаемый формат файла.")

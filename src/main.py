@@ -63,7 +63,7 @@ sorted_dicts = sort_dicts_by_date(operations)
 usd_transactions = filter_by_currency(transactions, "USD")
 descriptions = transaction_descriptions(transactions)
 card_number = card_number_generator(1, 5)
-transactions_dict = transactions_data(r"../data/transactions.csv")
+transactions_dict = transactions_data(r"../data/transactions_excel.xlsx")
 transaction_amount_rub = transaction_amount(transactions_dict)
 
 print(masked_card_number)
