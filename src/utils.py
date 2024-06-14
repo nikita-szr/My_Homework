@@ -105,8 +105,8 @@ def transactions_data(path: str) -> list[dict[str, Any]]:
             print("Ошибка: Файл не найден.")
             return []
         except pd.errors.ParserError:
-            logger.error(f"Файл не является csv объектом: {transactions_data}")
-            print("Ошибка: Файл не является csv объектом.")
+            logger.error(f"Файл не является xlsx объектом: {transactions_data}")
+            print("Ошибка: Файл не является xlsx объектом.")
             return []
         except Exception as e:
             logger.error(f"Ошибка{e}: {transactions_data}")
