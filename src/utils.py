@@ -4,6 +4,7 @@ import os
 from typing import Any, Dict, List, Union
 
 import pandas as pd
+import re
 
 from src.external_api import currency_conversion
 
@@ -138,3 +139,17 @@ def transaction_amount(transactions: List[Dict[str, Any]]) -> Union[float, None]
             print("Ошибка: Некорректный формат данных транзакции.")
             result = None
     return result
+
+
+def transactions_by_description(transactions_dict: List[Dict], user_search: str) -> List[Dict]:
+    sorted_transactions = []
+    search_pattern = re.compile(user_search, flags=re.IGNORECASE)
+    for transaction in transactions_dict:
+        state = transaction.get("state")
+        if isinstance(state, str) and search_pattern.search(state):
+            sorted_transactions.append(transaction)
+    return sorted_transactions
+
+
+# result = transactions_by_description(transactions_data(r"../data/transactions.csv"), "executed")
+# print(result)
