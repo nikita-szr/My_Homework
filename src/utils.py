@@ -1,10 +1,10 @@
 import json
 import logging
 import os
+import re
 from typing import Any, Dict, List, Union
 
 import pandas as pd
-import re
 
 from src.external_api import currency_conversion
 

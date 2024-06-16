@@ -1,12 +1,12 @@
-from src.utils import transactions_data, dict_of_category, transactions_by_description
 from src.processing import sort_dicts_by_date
-from src.widget import convert_date
-from src.widget import card_or_account_mask
+from src.utils import (dict_of_category, transactions_by_description,
+                       transactions_data)
+from src.widget import card_or_account_mask, convert_date
 
 
 def main():
     while True:
-        print(f'''Привет! Добро пожаловать в программу работы с банковскими транзакциями. 
+        print('''Привет! Добро пожаловать в программу работы с банковскими транзакциями.
         Выберите необходимый пункт меню:
         1. Получить информацию о транзакциях из JSON-файла
         2. Получить информацию о транзакциях из CSV-файла
@@ -82,7 +82,7 @@ def main():
         else:
             print(f'Ответ {user_filter_by_description} не распознан')
     if filtered_by_description:
-        print(f'Распечатываю итоговый список транзакций...')
+        print('Распечатываю итоговый список транзакций...')
         print(f'Всего банковских операций в выборке: {len(filtered_by_description)}')
         for transaction in filtered_by_description:
             date = convert_date(transaction["date"])
@@ -91,17 +91,17 @@ def main():
             card_or_account_to = card_or_account_mask(transaction["to"])
             amount = transaction["operationAmount"]["amount"]
             code = transaction["operationAmount"]["currency"]["code"]
-            if "from" in transaction and type(transaction["from"]) != float:
+            if "from" in transaction and not isinstance(transaction["from"], float):
                 card_or_account_from = card_or_account_mask(transaction["from"])
-                print(f'''{date} {description}  
+                print(f'''{date} {description}
 {card_or_account_from} -> {card_or_account_to}
 Сумма: {amount} {code}''')
             else:
-                print(f'''{date} {description}  
+                print(f'''{date} {description}
 {card_or_account_to}
 Сумма: {amount} {code}''')
     else:
-        print(f'Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
+        print('Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
 
 
 if __name__ == "__main__":
