@@ -1,8 +1,8 @@
 from src.utils import transactions_data, dict_of_category, transactions_by_description
 from src.processing import sort_dicts_by_date
 from src.widget import convert_date
-from src.masks import mask_bank_account, mask_card_number
 from src.widget import card_or_account_mask
+
 
 def main():
     while True:
