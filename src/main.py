@@ -88,17 +88,20 @@ def main():
             date = convert_date(transaction["date"])
             description = transaction["description"]
             card_or_account_from = ""
-            if "from" in transaction:
-                card_or_account_from = card_or_account_mask(transaction["from"])
             card_or_account_to = card_or_account_mask(transaction["to"])
             amount = transaction["operationAmount"]["amount"]
             code = transaction["operationAmount"]["currency"]["code"]
-            print(f'''{date} {description}
-            
+            if "from" in transaction and type(transaction["from"]) != float:
+                card_or_account_from = card_or_account_mask(transaction["from"])
+                print(f'''{date} {description}  
 {card_or_account_from} -> {card_or_account_to}
 Сумма: {amount} {code}''')
+            else:
+                print(f'''{date} {description}  
+{card_or_account_to}
+Сумма: {amount} {code}''')
     else:
-        print(f'Программа: Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
+        print(f'Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
 
 
 if __name__ == "__main__":
