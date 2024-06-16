@@ -142,6 +142,7 @@ def transaction_amount(transactions: List[Dict[str, Any]]) -> Union[float, None]
 
 
 def transactions_by_description(transactions_dict: List[Dict], user_search: str) -> List[Dict]:
+    """Принимает список словарей с транзакциями, выбор пользователя и фильтрует транзакции по выбору"""
     sorted_transactions = []
     search_pattern = re.compile(user_search, flags=re.IGNORECASE)
     for transaction in transactions_dict:
@@ -155,6 +156,7 @@ dict_of_category = {"state": ["EXECUTED", "CANCELED", "PENDING"]}
 
 
 def filter_number_of_operation_in_category(transactions_dict: List[Dict], categories: Dict) -> Dict:
+    """Принимает список словарей с транзакциями и считает количество операций по категории"""
     category_count = {category: 0 for category in categories["state"]}
     for transaction in transactions_dict:
         state = transaction.get("state")
