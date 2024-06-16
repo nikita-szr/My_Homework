@@ -151,5 +151,13 @@ def transactions_by_description(transactions_dict: List[Dict], user_search: str)
     return sorted_transactions
 
 
-# result = transactions_by_description(transactions_data(r"../data/transactions.csv"), "executed")
-# print(result)
+dict_of_category = {"state": ["EXECUTED", "CANCELED", "PENDING"]}
+
+
+def filter_number_of_operation_in_category(transactions_dict: List[Dict], categories: Dict) -> Dict:
+    category_count = {category: 0 for category in categories["state"]}
+    for transaction in transactions_dict:
+        state = transaction.get("state")
+        if state in category_count:
+            category_count[state] += 1
+    return category_count
