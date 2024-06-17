@@ -3,7 +3,7 @@
 ## Install:
 1. Clone repository:
 ```
-https://github.com/nikita-szr/My_Homework/tree/feature/Homework_12_1
+https://github.com/nikita-szr/My_Homework/tree/feature/Homework_13_2
 ```
 2. Install requirements: 
 ```
