@@ -10,8 +10,8 @@ def card_or_account_mask(number: str) -> str:
         return "Неверный номер счёта"
     elif "счет" not in number.lower():
         cardnumber = number.split()
-        if len(cardnumber[1]) > 15:
-            return cardnumber[0] + " " + mask_card_number(cardnumber[1])
+        if len(cardnumber[-1]) > 15:
+            return ' '.join(cardnumber[0:-1]) + " " + mask_card_number(cardnumber[-1])
         return "Неверный номер карты"
     else:
         return "Введённые данные не распознаны"
