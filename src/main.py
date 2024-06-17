@@ -73,7 +73,7 @@ def main():
             user_description = input("Введите слово для фильтрации транзакций: ").lower()
             filtered_by_description = []
             for transaction in ruble_transactions:
-                if user_description in transaction["description"]:
+                if user_description in transaction["description"].lower():
                     filtered_by_description.append(transaction)
             break
         elif user_filter_by_description == "нет":
